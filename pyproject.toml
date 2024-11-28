@@ -6,7 +6,7 @@ authors = ["Big Baga <telioko@tutanota.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.9"
 pyspark = "^3.5.3"
 requests = "^2.23.0"
 python-dotenv = "^1.0.1"
