@@ -1,4 +1,3 @@
-from pyspark.sql import SparkSession
 import pandas as pd
 import os
 
@@ -12,4 +11,3 @@ def from_xlsx(session, path, **kwargs):
     path = normalize_path(path)
     df_pandas = pd.read_excel(path, **kwargs)
     return session.createDataFrame(df_pandas)
-
