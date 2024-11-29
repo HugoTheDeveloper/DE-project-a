@@ -23,7 +23,7 @@ DEGREES = [
     'OTD',  # Doctor of Occupational Therapy
 ]
 
-TITLES = [
+SHORT_TITLES = [
     'Mr',    # Mister
     'Mrs',   # Mistress (married woman)
     'Ms',    # Miss (woman, marital status unknown)
@@ -43,8 +43,15 @@ TITLES = [
     'Eng',   # Engineer
     'Dame',  # Title for women equivalent to knighthood
     'Sir',   # Title for men equivalent to knighthood
+    
 ]
 
-TITLES_REGEX = "|".join([f'{i}.' for i in TITLES])
+TITLES = [
+    'Miss'
+]
+
+TITLES_REGEX = "|".join([f'{i}\.' for i in SHORT_TITLES])
+TITLES_REGEX += f'|{"|".join([i for i in TITLES])}' # Add titles from TITLES with another logic
+
 
 DEGREES_REGEX = "|".join(DEGREES)
