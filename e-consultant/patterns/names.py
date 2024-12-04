@@ -53,5 +53,4 @@ TITLES = [
 TITLES_REGEX = "|".join([f'{i}\.' for i in SHORT_TITLES])
 TITLES_REGEX += f'|{"|".join([i for i in TITLES])}' # Add titles from TITLES with another logic
 
-
 DEGREES_REGEX = "|".join(DEGREES)
