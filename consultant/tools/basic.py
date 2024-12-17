@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import datetime
 
 
 def normalize_path(*args):
@@ -28,3 +29,14 @@ def get_properies_for_gp():
         "password": DB_PASS,
         "driver": "org.postgresql.Driver"
     }
+
+
+def get_hdfs_url(file_name, today=False):
+    HOME_DIR = os.getenv('HOME_DIR')
+    HDFS_HOST = os.getenv('HDFS_HOST')
+    OUTPUT_DIR = os.getenv('OUTPUT_DIR')
+
+    file = f"{file_name}{datetime.date.today() if today else ''}"
+    hdfs_path = normalize_path(*[HOME_DIR, OUTPUT_DIR, file])
+
+    return f"hdfs://{HDFS_HOST}/{hdfs_path}"
