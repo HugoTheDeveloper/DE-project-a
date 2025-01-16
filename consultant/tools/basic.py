@@ -35,14 +35,15 @@ def get_properies_for_gp():
     }
 
 
-def get_hdfs_url(dir_list, today=False):
+def get_hdfs_url(file_name, today=False, *dir_list):
     HOME_DIR = os.getenv('HOME_DIR')
     HDFS_HOST = os.getenv('HDFS_HOST')
-    OUTPUT_DIR = os.getenv('OUTPUT_DIR')
 
     if today:
-        dir_list[-1] = f"{dir_list[-1]}_{datetime.date.today()}"
-    path = [HOME_DIR, OUTPUT_DIR, *dir_list]
+        name, extension = os.path.splitext(file_name)
+        file_name = f"{name}_{datetime.date.today()}{extension}"
+        
+    path = [HOME_DIR, *dir_list, file_name]
     hdfs_path = normalize_path(*path)
 
     return f"hdfs://{HDFS_HOST}/{hdfs_path}"
