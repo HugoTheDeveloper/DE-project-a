@@ -27,6 +27,7 @@ if __name__ == '__main__':
     transactions = spark.read.csv(path, header=True, inferSchema=True)
     
     # Correcting and deduplicating, dropping nulls
+    
     corrected_amount = transactions \
     .withColumn(
         'amount',
